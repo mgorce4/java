@@ -37,8 +37,9 @@ public class Main {
 		System.out.println(turingEngine.equals(babbage));
 		System.out.println(turingEngine.equals(turing));
 		System.out.println(line());
+		
 	}
-	
+
 	public static String line() {
 		return "----------------------";
 	}
