@@ -30,10 +30,10 @@ public class BeehiveMain {
         	
             while (choice != 4) {
             	if (beehive1.nbOfQueens() == 0) {
-                choice = menuWithQueen(scanner, beehive1);
+                choice = menuWithNoQueen(scanner, beehive1);
                 }
             	else {
-            		choice = menuWithNoQueen(scanner, beehive1);
+            		choice = menuWithQueen(scanner, beehive1);
             	}
             }
         }catch (Exception e) {
@@ -44,12 +44,12 @@ public class BeehiveMain {
 		
 	}
 
-	private static int menuWithQueen(Scanner scanner, Beehive beehive1) {
+	private static int menuWithNoQueen(Scanner scanner, Beehive beehive1) {
 		int choice;
 		int choix;
 		int nbAbeilles;
 		message(beehive1.presentationHive());
-		questionWhenQueen();
+		questionWhenNoQueen();
 		choice = scanner.nextInt(); // Assign value to the existing choice variable
 		scanner.nextLine(); // Consume newline
 		switch (choice) {
@@ -73,67 +73,7 @@ public class BeehiveMain {
 		        }
 		        break;
 		    case 2:
-		    	message("Entrer l'espece des ouvrières: ");
-		        message("1. Abeille Noire");
-		        message("2. Abeille Italienne");
-		        message("3. Abeille Caucasienne");
-		        choix = scanner.nextInt();
-		        scanner.nextLine();
-		        message("Entrer le nombre d'ouvrières: ");
-		        nbAbeilles = scanner.nextInt();
-		        scanner.nextLine();
-		        
-		        switch (choix) {
-			        case 1:
-			        	for (int i = 0; i < nbAbeilles; i++) {
-			        		addWorker(beehive1, Espece.Noire);
-			        	}
-                		break;
-			        case 2 :
-			        	for (int i = 0; i < nbAbeilles; i++) {
-			        		addWorker(beehive1, Espece.Italienne);
-			        	}
-						break;
-			        case 3:
-						for (int i = 0; i < nbAbeilles; i++) {
-							addWorker(beehive1, Espece.Caucasienne);
-						}
-			        	break;
-			        default:
-                    	message("Choix invalide.");
-		        }
-		        break;
-		    case 3:
-		    	message("Entrer l'espece du faux-bourdon: ");
-		        message("1. Abeille Noire");
-		        message("2. Abeille Italienne");
-		        message("3. Abeille Caucasienne");
-		        choix = scanner.nextInt();
-		        scanner.nextLine();
-		        message("Entrer le nombre de faux-bourdons: ");
-		        nbAbeilles = scanner.nextInt();
-		        scanner.nextLine();
-		        switch (choix) {
-			        case 1:
-						for (int i = 0; i < nbAbeilles; i++) {
-							addDrone(beehive1, Espece.Noire);
-						}
-                		break;
-			        case 2 :
-						for (int i = 0; i < nbAbeilles; i++) {
-							addDrone(beehive1, Espece.Italienne);
-						}
-						break;
-			        case 3:
-						for (int i = 0; i < nbAbeilles; i++) {
-							addDrone(beehive1, Espece.Caucasienne);
-						}
-			        	break;
-			        default:
-                    	message("Choix invalide.");
-		        }
-		        break;
-		    case 4:
+		    	choice = 4;
 		        message("Au revoir");
 		        break;
 		    default:
@@ -142,13 +82,11 @@ public class BeehiveMain {
 		return choice;
 	}
 	
-	public static void questionWhenQueen() {
-		message("1. Ajouter une reine");
-		message("2. Ajouter un groupe d'ouvrières");
-		message("3. Ajouter un groupe de faux-bourdons");
-		message("4. Quitter");
-	}
 	public static void questionWhenNoQueen() {
+		message("1. Ajouter une reine");
+		message("2. Quitter");
+	}
+	public static void questionWhenQueen() {
 		message("1. Ajouter un groupe d'ouvrières");
 		message("2. Ajouter un  groupe de faux-bourdons");
 		message("3. Quitter");
@@ -170,12 +108,12 @@ public class BeehiveMain {
 	}
 	
 	
-	private static int menuWithNoQueen(Scanner scanner, Beehive beehive1) {
+	private static int menuWithQueen(Scanner scanner, Beehive beehive1) {
 		int choice;
 		int choix;
 		int nbAbeilles;
 		message(beehive1.presentationHive());
-		questionWhenNoQueen();
+		questionWhenQueen();
 		choice = scanner.nextInt(); // Assign value to the existing choice variable
 		scanner.nextLine();
 		choice = choice + 1;
