@@ -46,7 +46,7 @@ public class Beehive {
 				nbDrones++;
 			}
 		}
-		return "la colonie de la ruche" + this.name + "\ncontient actuellement " + colony.size() + " abeille(s) \n -> " + nbQueens + " reine(s) \n -> " + nbWorkers + " ouvrière(s) \n -> " + nbDrones + "faux-bourdon(s)";
+		return "la colonie de la ruche" + this.name + "\ncontient actuellement " + colony.size() + " abeille(s) \n -> " + nbQueens + " reine(s) \n -> " + nbWorkers + " ouvrière(s) \n -> " + nbDrones + " faux-bourdon(s)";
 	}
 	
 	public Integer nbOfQueens() {
