@@ -4,8 +4,8 @@ package honeybee.model;
 public class Drone extends HoneyBee{
 	
 	
-	public Drone(String name) {
-		super(name);
+	public Drone(Espece espece) {
+		super(espece);
 	}
 
 	@Override

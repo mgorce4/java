@@ -1,21 +1,21 @@
 package honeybee.model;
 
 public abstract class HoneyBee {
-	protected final String name ;
+	Espece espece;
 	
-	protected HoneyBee(String name) {
-		this.name = name;
+	protected HoneyBee(Espece espece) {
+		this.espece = espece;
 	}
 	
 	public String doYourJob() {
-		return this.name + " I'm a honeybee!";
+		return this.espece.name() + " I'm a honeybee!";
 	}
 	public String fly() {
 		return "I believe, I can fly!";
 	}
 
 	public String getName() {
-		return name;
+		return espece.name();
 	}
 	
 }

@@ -1,6 +1,6 @@
 package farwest;
 
-public class Heros extends PersonnageFarWest{
+public class Heros extends PersonnageFarWest implements EtreCapableDeTirerAvecUneArmeAFeu{
 	private String profession;
 	private Cheval cheval;
 	
@@ -35,5 +35,9 @@ public class Heros extends PersonnageFarWest{
 	public void attrapper(Bandit bandit) {
 		System.out.println("Le bandit " + bandit.getNom() + " a été attrapé par le héros " + this.getNom());
 	}
-
+	
+	@Override
+	public void tirerAuPistolet() {
+		System.out.println("Je tire plus vite au pistolet / ..Pan..Pan..Pan");
+	}
 }

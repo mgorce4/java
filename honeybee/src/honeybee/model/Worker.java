@@ -2,8 +2,8 @@ package honeybee.model;
 
 public class Worker extends HoneyBee {
 
-	public Worker(String name) {
-		super(name);
+	public Worker(Espece espece) {
+		super(espece);
 	}
 
 	@Override

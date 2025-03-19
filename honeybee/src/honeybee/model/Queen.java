@@ -2,8 +2,8 @@ package honeybee.model;
 
 public class Queen extends HoneyBee{
 	
-	public Queen(String name) {
-		super(name);
+	public Queen(Espece espece) {
+		super(espece);
 		
 	}
 

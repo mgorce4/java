@@ -14,7 +14,15 @@ public class PersonnageFarWest {
 	}
 	
 	public String decrire() {
-		return "Je suis " + this.prenom + " " + this.nom + "!";
+		return this.prenom + " " + this.nom + "!";
+	}
+
+	public String prenom() {
+		return prenom;
+	}
+	
+	public String nom() {
+		return nom;
 	}
 
 }

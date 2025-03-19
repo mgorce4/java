@@ -1,15 +1,19 @@
-package beehive.application;
+package honeybee.application;
+
 
 import java.util.Scanner;
 
-import beehive.model.Beehive;
-import beehive.model.Drone;
-import beehive.model.Espece;
-import beehive.model.HoneyBee;
-import beehive.model.Queen;
-import beehive.model.Worker;
+import honeybee.model.Beehive;
+import honeybee.model.Drone;
+import honeybee.model.Espece;
+import honeybee.model.HoneyBee;
+import honeybee.model.Queen;
+import honeybee.model.Worker;
 
-public class BeehiveMain {
+public class BeehivesMain {
+	
+	
+	
 	private static void message(String text) {
 		System.out.println(text);
 	}
@@ -24,6 +28,7 @@ public class BeehiveMain {
         
 		Beehive beehive1 = new Beehive(new java.util.ArrayList<>(), beehiveName);
 		int choice = 0; // Declare choice once
+        String espece ;
 
         try {
         	
@@ -46,8 +51,9 @@ public class BeehiveMain {
 	private static int menuWithNoQueen(Scanner scanner, Beehive beehive1) {
 		int choice;
 		int choix;
+		String name;
 		message(beehive1.presentationHive());
-		questionWhenNoQueen();
+		questionWhenQueen();
 		choice = scanner.nextInt(); // Assign value to the existing choice variable
 		scanner.nextLine(); // Consume newline
 		switch (choice) {
@@ -71,6 +77,45 @@ public class BeehiveMain {
 		        }
 		        break;
 		    case 2:
+		    	message("Entrer l'espece de l'ouvrière: ");
+		        message("1. Abeille Noire");
+		        message("2. Abeille Italienne");
+		        message("3. Abeille Caucasienne");
+		        choix = scanner.nextInt();
+		        scanner.nextLine();
+		        switch (choix) {
+			        case 1:
+                		addWorker(beehive1, Espece.Noire);
+                		break;
+			        case 2 :
+			        	addWorker(beehive1, Espece.Italienne);
+						break;
+			        case 3:
+			        	addWorker(beehive1, Espece.Caucasienne);
+			        	break;
+		        }
+		        break;
+		    case 3:
+		    	message("Entrer l'espece du faux-bourdon: ");
+		        message("1. Abeille Noire");
+		        message("2. Abeille Italienne");
+		        message("3. Abeille Caucasienne");
+		        choix = scanner.nextInt();
+		        scanner.nextLine();
+		        switch (choix) {
+			        case 1:
+                		addDrone(beehive1, Espece.Noire);
+                		break;
+			        case 2 :
+			        	addDrone(beehive1, Espece.Italienne);
+						break;
+			        case 3:
+			        	addWorker(beehive1, Espece.Caucasienne);
+			        	break;
+		        }
+		        break;
+		    case 4:
+		        message("Au revoir");
 		        break;
 		    default:
 		        message("Choix invalide.");
@@ -78,13 +123,15 @@ public class BeehiveMain {
 		return choice;
 	}
 	
-	public static void questionWhenNoQueen() {
-		message("1. Ajouter une reine");
-		message("2. Quitter");
-	}
 	public static void questionWhenQueen() {
-		message("1. Ajouter un groupe d'ouvrières");
-		message("2. Ajouter un  groupe de faux-bourdons");
+		message("1. Ajouter une reine");
+		message("2. Ajouter une ouvrière");
+		message("3. Ajouter un faux-bourdon");
+		message("4. Quitter");
+	}
+	public static void questionWhenNoQueen() {
+		message("1. Ajouter une ouvrière");
+		message("2. Ajouter un faux-bourdon");
 		message("3. Quitter");
 	}
 	
@@ -106,82 +153,30 @@ public class BeehiveMain {
 	
 	private static int menuWithQueen(Scanner scanner, Beehive beehive1) {
 		int choice;
-		int choix;
-		int nbAbeilles;
+		String name;
 		message(beehive1.presentationHive());
-		questionWhenQueen();
+		questionWhenNoQueen();
 		choice = scanner.nextInt(); // Assign value to the existing choice variable
 		scanner.nextLine();
 		choice = choice + 1;
 		switch (choice) {
 		case 2:
-			message("Entrer l'espece de l'ouvrière: ");
-	        message("1. Abeille Noire");
-	        message("2. Abeille Italienne");
-	        message("3. Abeille Caucasienne");
-	        choix = scanner.nextInt();
-	        scanner.nextLine();
-	        message("Entrer le nombre d'ouvrières: ");
-	        nbAbeilles = scanner.nextInt();
-	        scanner.nextLine();
-	        
-	        switch (choix) {
-		        case 1:
-		        	for (int i = 0; i < nbAbeilles; i++) {
-		        		addWorker(beehive1, Espece.Noire);
-		        	}
-            		break;
-		        case 2 :
-		        	for (int i = 0; i < nbAbeilles; i++) {
-		        		addWorker(beehive1, Espece.Italienne);
-		        	}
-					break;
-		        case 3:
-					for (int i = 0; i < nbAbeilles; i++) {
-						addWorker(beehive1, Espece.Caucasienne);
-					}
-		        	break;
-		        default:
-                	message("Choix invalide.");
-                	
-	        }
-	        break;
+			message("Entrer le nom de l'ouvrière: ");
+			name = scanner.nextLine();
+			addWorker(beehive1, name);
+			break;
 		case 3:
-			message("Entrer l'espece du faux-bourdon: ");
-	        message("1. Abeille Noire");
-	        message("2. Abeille Italienne");
-	        message("3. Abeille Caucasienne");
-	        choix = scanner.nextInt();
-	        scanner.nextLine();
-	        message("Entrer le nombre de faux-bourdons: ");
-	        nbAbeilles = scanner.nextInt();
-	        scanner.nextLine();
-	        switch (choix) {
-		        case 1:
-					for (int i = 0; i < nbAbeilles; i++) {
-						addDrone(beehive1, Espece.Noire);
-					}
-            		break;
-		        case 2 :
-					for (int i = 0; i < nbAbeilles; i++) {
-						addDrone(beehive1, Espece.Italienne);
-					}
-					break;
-		        case 3:
-					for (int i = 0; i < nbAbeilles; i++) {
-						addDrone(beehive1, Espece.Caucasienne);
-					}
-		        	break;
-		        default:
-                	message("Choix invalide.");
-	        }
+			message("Entrer le nom du faux-bourdon: ");
+			name = scanner.nextLine();
+			addDrone(beehive1, name);
 			break;
 		case 4:
-			
+			message("Au revoir");
 			break;
 		default:
 			message("Choix invalide.");
 		}
 		return choice;
 	}
+	
 }
