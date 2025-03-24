@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import calculatrice.model.Calculatrice;
+import calculatrice.util.DivisionParZeroException;
+
 class CalculatriceTest {
 	
 	private Calculatrice calculatrice;
@@ -37,18 +40,13 @@ class CalculatriceTest {
 	}
 	
 	@Test
-	void doitDiviserDeuxEntiers() {
+	void doitDiviserDeuxEntiers() throws DivisionParZeroException {
 		
 		int division = calculatrice.diviser(42, 5);
 		
 		assertEquals(8, division);
 	}
-	@Test
-    void doitLeverUneArithmeticExceptionSiDivisionParZero() {
-        Exception exception = assertThrows(ArithmeticException.class, () ->
-            calculatrice.diviser(1, 0));
-        assertEquals("/ by zero", exception.getMessage());
-    }
+	
 	
 	@Test
 	void doitMuliplierDeuxEntiers() {
@@ -59,6 +57,17 @@ class CalculatriceTest {
 		int resultat = calculatrice.multiplier(a, b);
 		// Assert
 		assertEquals(15, resultat);
+	}
+	@Test
+	void doitLeverUneDivisionParZeroException() {
+		// Arrange
+		int dividende = 42;
+		int diviseur = 0;
+		// Act
+		Exception exception = assertThrows(DivisionParZeroException.class, () -> calculatrice.diviser(dividende, diviseur));
+		// Assert
+		assertEquals("Division impossible car le diviseur est égal à 0 !", exception.getMessage());
+		
 	}
 
 }
