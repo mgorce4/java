@@ -1,1 +1,13 @@
 /.metadata/
+
+*.xd
+
+.sonarlint/default/known-findings-store10111641785995966197/blobs/version
+
+*.lck
+
+.sonarlint/default/xodus-local-only-issue-store12681323815530767177/blobs/version
+
+.sonarlint/storage/known_findings_backup.tar.gz
+
+*.gz
