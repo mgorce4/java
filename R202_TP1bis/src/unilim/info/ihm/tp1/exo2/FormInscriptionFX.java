@@ -32,7 +32,7 @@ public class FormInscriptionFX extends Application {
 	private ComboBox<Object> cbApplication;
 	private Button btnSouscrire;
 	
-	private static final String[] CIVILITY_ITEMS = {"M.", "Mme", "Mlle"};
+	private static final String[] CIVILITY_ITEMS = {"M.", "Mme", "Mlle","Autre"};
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
@@ -46,7 +46,8 @@ public class FormInscriptionFX extends Application {
 		GridPane gridTop = new GridPane();
 		HBox bottomBox = new HBox();
 		HBox topBox = new HBox();
-
+		
+		
 		
 		lblTitle = new Label("Souscrivez à notre newsletter!");
 		lblTitle.setUnderline(true);
@@ -112,7 +113,25 @@ public class FormInscriptionFX extends Application {
 		root.setCenter(gridMid);
 		root.setBottom(bottomBox); // Set the HBox as the bottom
 		root.setLeft(spacer);
+		
+		lblTitle.getStyleClass().add("title-label");
+	    lblBienvenue.getStyleClass().add("welcome-label");
+	    lblCivilite.getStyleClass().add("grid-label");
+	    lblNom.getStyleClass().add("grid-label");
+	    lblPrenom.getStyleClass().add("grid-label");
+	    lbladresseMail.getStyleClass().add("grid-label");
+	    lbladresseMail2.getStyleClass().add("grid-label");
+	    tfNom.getStyleClass().add("text-field");
+	    tfPrenom.getStyleClass().add("text-field");
+	    tfadresseMail.getStyleClass().add("text-field");
+	    tfadresseMail2.getStyleClass().add("text-field");
+	    cbCivilite.getStyleClass().add("choice-box");
+	    btnSouscrire.getStyleClass().add("subscribe-button");
+		
+		
+		scene.getStylesheets().add(getClass().getResource("FormInscription.css").toExternalForm());
 		primaryStage.setScene(scene);
+		primaryStage.setTitle("Formulaire d'inscription");
 		primaryStage.show();
 		
 		

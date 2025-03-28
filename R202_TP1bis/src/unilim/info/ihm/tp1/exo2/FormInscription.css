@@ -1,0 +1,50 @@
+
+
+
+.title-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: purple;
+}
+
+.welcome-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #666; /* Light gray text color */
+}
+
+/* Style for labels in the grid */
+.grid-label {
+    -fx-font-size: 15px;
+    -fx-text-fill: #333;
+}
+
+/* Style for text fields */
+.text-field {
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* Style for choice boxes */
+.choice-box {
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* Style for the subscribe button */
+.subscribe-button {
+    -fx-background-color: darkblue;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+}
+
+.subscribe-button:hover {
+    -fx-background-color: purple; 
+}
+
+.root { 
+    -fx-background-color: linear-gradient(to bottom, lightblue, pink);
+}
