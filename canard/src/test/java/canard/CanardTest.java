@@ -10,13 +10,15 @@ import canard.model.CanardEnPlastique;
 import canard.model.Colvert;
 import canard.model.Leurre;
 import canard.model.Mandarin;
+import canard.model.PrototypeCanard;
 
 class CanardTest {
 
 	private static final String NAGER = "Tous les canards flottent, même les leurres!";
 
 	private static final String VOLER = "Je vole !";
-	private static final String NE_PAS_VOLER = "Je ne sais pas voler";
+	private static final String NE_PAS_VOLER = "Je ne sais pas voler !";
+	private static final String PROPULSION_A_REACTION = "Je vole avec un réacteur";
 
 	private static final String CANCAN = "Can-can";
 	private static final String COINCOIN = "Coin-coin";
@@ -26,6 +28,7 @@ class CanardTest {
 	Canard leurre;
 	Canard mandarin;
 	Canard canardPlastique;
+	Canard prototypeCanard;
 
 	@BeforeEach
 	private void extracted() {
@@ -33,6 +36,7 @@ class CanardTest {
 		leurre = new Leurre("Danny");
 		mandarin = new Mandarin("Oshidori");
 		canardPlastique = new CanardEnPlastique("Rubber");
+		prototypeCanard = new PrototypeCanard("PrototypeCanard");
 	}
 
 	@Test
@@ -43,9 +47,11 @@ class CanardTest {
 		// on peut inliner les assert
 		// car ici le code de test est simple à lire
 		assertEquals(VOLER, mandarin.effectuerVol());
-
+		assertEquals(NE_PAS_VOLER, prototypeCanard.effectuerVol());
 		assertEquals(NE_PAS_VOLER, leurre.effectuerVol());
 		assertEquals(NE_PAS_VOLER, canardPlastique.effectuerVol());
+		prototypeCanard.setComportementVol(() -> PROPULSION_A_REACTION);
+		assertEquals(PROPULSION_A_REACTION, prototypeCanard.effectuerVol());
 	}
 
 	@Test
@@ -53,7 +59,7 @@ class CanardTest {
 
 		assertEquals(CANCAN, colvert.effectuerCancan());
 		assertEquals(CANCAN, mandarin.effectuerCancan());
-
+		assertEquals(SILENCE, prototypeCanard.effectuerCancan());
 		assertEquals(SILENCE, leurre.effectuerCancan());
 		assertEquals(COINCOIN, canardPlastique.effectuerCancan());
 	}
@@ -63,7 +69,7 @@ class CanardTest {
 
 		assertEquals(NAGER, colvert.nager());
 		assertEquals(NAGER, mandarin.nager());
-
+		assertEquals(NAGER, prototypeCanard.nager());
 		assertEquals(NAGER, leurre.nager());
 		assertEquals(NAGER, canardPlastique.nager());
 	}
@@ -81,6 +87,9 @@ class CanardTest {
 
 		assertEquals("Rubber", canardPlastique.getNom());
 		assertEquals("Je suis un canard en plastique", canardPlastique.afficher());
+		
+		assertEquals("PrototypeCanard", prototypeCanard.getNom());
+		assertEquals("Je suis un prototype de canard", prototypeCanard.afficher());
 	}
 	
 	@Test

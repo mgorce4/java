@@ -3,15 +3,16 @@ package canard.model;
 import canard.model.cancan.CanardMuet;
 import canard.model.vol.NePasVoler;
 
-public class Leurre extends Canard {
+public class PrototypeCanard extends Canard{
 
-	public Leurre(String nom) {
+	public PrototypeCanard(String nom) {
 		super(nom, new NePasVoler(), new CanardMuet());
 	}
 
 	@Override
 	public String afficher() {
-		return "Je suis un leurre";
+		return "Je suis un prototype de canard";
+
 	}
 
 }
