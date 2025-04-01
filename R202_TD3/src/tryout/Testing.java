@@ -1,15 +1,19 @@
 package tryout;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Testing extends Application{
@@ -25,6 +29,8 @@ public class Testing extends Application{
 	private TextField tfEmail;
 	private Button btnPhoto;
 	private Button btnCreerCarte;
+	private Text txtCivilite;
+	private Text txtNom;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -34,6 +40,7 @@ public class Testing extends Application{
 		root.setPadding(new Insets(10,10,10,10));
 		GridPane gridMid = new GridPane();
 		FlowPane flowButn = new FlowPane();
+		Group group = new Group();
 		
 		lblTitle = new Label("Saisir ma carte de visite");
 		lblTitle.setMaxWidth(Double.MAX_VALUE);
@@ -49,6 +56,8 @@ public class Testing extends Application{
 		tfEmail = new TextField();
 		btnPhoto = new Button("Photo");
 		btnCreerCarte = new Button("Créer carte");
+		
+		
 		
 		gridMid.setHgap(10);
 		gridMid.setVgap(10);
@@ -82,5 +91,8 @@ public class Testing extends Application{
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
+	
+	
 
+	
 }
