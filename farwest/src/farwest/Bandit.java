@@ -1,6 +1,8 @@
 package farwest;
 
-public class Bandit extends PersonnageFarWest implements EtreCapableDeTirerAvecUneArmeAFeu {
+
+
+public class Bandit extends PersonnageFarWest implements  EtreCapableDeTirerAvecUneArmeAFeu,  Comparable<Bandit> {
 	private Integer taille;
 	private Boolean estEnPrison;
 	
@@ -53,5 +55,10 @@ public class Bandit extends PersonnageFarWest implements EtreCapableDeTirerAvecU
 	@Override
 	public void tirerAuPistolet() {
 		System.out.println("Je tire au pistolet: .....Pan.....Pan.....Pan");
+	}
+
+	@Override
+	public int compareTo(Bandit o) {
+		return this.taille.compareTo(o.taille);
 	}
 }
