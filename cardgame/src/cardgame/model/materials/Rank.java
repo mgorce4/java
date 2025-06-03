@@ -1,4 +1,4 @@
-package cardgame.model;
+package cardgame.model.materials;
 
 public enum Rank {
 	ACE("1"),

@@ -1,4 +1,4 @@
-package cardgame.model;
+package cardgame.model.materials;
 
 import java.util.Objects;
 
